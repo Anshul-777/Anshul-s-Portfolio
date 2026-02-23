@@ -36,6 +36,7 @@ export interface Project {
   slug: string;
   detailedDescription?: DetailedDescription;
   flowImages?: FlowImage[];
+  liveUrl?: string;
   client?: string;
   camera?: string;
   location?: string;

@@ -11,7 +11,7 @@ interface Message {
   content: string;
 }
 
-const GEMINI_API_KEY = 'AIzaSyDrEY0e3nWr3kqwj2MiNkY4Tz5LVtxyg4s';
+const GEMINI_API_KEY = 'AIzaSyBQZM0VDCri6LrWwrUuSAwUG1h5ttare4c';
 
 // Common Q&A for instant offline answers
 const COMMON_QA: Record<string, string> = {

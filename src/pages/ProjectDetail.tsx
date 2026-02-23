@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, Tag, Github, MessageCircle, ArrowLeft, ImageOff } from 'lucide-react';
+import { Calendar, Tag, Github, MessageCircle, ArrowLeft, ImageOff, ExternalLink } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { SEOHead } from '@/components/seo/SEOHead';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
@@ -64,6 +64,11 @@ export default function ProjectDetail() {
             </div>
             <Separator />
             <p className="text-lg md:text-xl font-light leading-relaxed text-foreground">{project.description}</p>
+            {project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-foreground text-background rounded-sm font-light tracking-wide hover:bg-foreground/90 transition-colors vibrant-btn">
+                <ExternalLink className="size-4" /> Visit Live Prototype — Enjoy!
+              </a>
+            )}
             {project.technologies && project.technologies.length > 0 && (
               <div className="space-y-3">
                 <h3 className="text-sm font-light tracking-widest uppercase text-muted-foreground">Technologies Used</h3>
@@ -114,9 +119,14 @@ export default function ProjectDetail() {
               </ScrollReveal>
             )}
 
-            {/* GitHub + Ask Chatbot */}
+            {/* Live Prototype + GitHub + Chatbot */}
             <ScrollReveal delay={0.3}>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                {project.liveUrl && (
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 bg-foreground text-background rounded-sm font-light tracking-wide hover:bg-foreground/90 transition-colors vibrant-btn">
+                    <ExternalLink className="size-5" /> Visit Live Prototype
+                  </a>
+                )}
                 <a href="https://github.com/Anshul-777" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-3 border border-border rounded-sm font-light tracking-wide text-foreground hover:bg-accent transition-colors vibrant-hover">
                   <Github className="size-5" /> View on GitHub
                 </a>

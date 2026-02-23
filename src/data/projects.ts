@@ -12,6 +12,16 @@ import aegisProfile from '@/assets/aegispay/08-profile.jpg';
 import aegisMLLayers from '@/assets/aegispay/09-ml-layers.jpg';
 import aegisAccuracy from '@/assets/aegispay/10-accuracy.jpg';
 
+import churnHero from '@/assets/churn/01-hero.png';
+import churnHeroMobile from '@/assets/churn/02-hero-mobile.jpg';
+import churnDashboard from '@/assets/churn/03-dashboard.jpg';
+import churnUsecases from '@/assets/churn/04-usecases.jpg';
+import churnCta from '@/assets/churn/05-cta.jpg';
+import churnPredictor from '@/assets/churn/06-predictor.jpg';
+import churnServices from '@/assets/churn/07-services.jpg';
+import churnResults from '@/assets/churn/08-results.jpg';
+import churnHistory from '@/assets/churn/09-history.jpg';
+
 export const projects: Project[] = [
   {
     id: '1',
@@ -68,9 +78,21 @@ export const projects: Project[] = [
     year: '2024',
     slug: 'churn-prediction',
     coverImage: projectChurn,
+    liveUrl: 'https://customer-churn-predictor-eta.vercel.app/',
     description: 'A behavioral analytics prototype demonstrating how businesses predict customer churn before it happens through engagement pattern analysis.',
     technologies: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'MLflow', 'Plotly'],
     images: [],
+    flowImages: [
+      { src: churnHero, alt: 'ChurnSense Landing Page', caption: 'Hero section powered by LightGBM Machine Learning — "Stop Customer Churn Before It Happens" with Launch Predictor, View Source, and Visit Portfolio CTAs.' },
+      { src: churnHeroMobile, alt: 'Mobile Hero View', caption: 'Mobile-responsive landing page with Customer Profile dashboard showing high-risk subscriber analysis, contract type, tenure, and 78% churn score.' },
+      { src: churnDashboard, alt: 'Customer Dashboard', caption: 'Detailed customer profile with contract type, tenure (8 months), internet service, tech support status, monthly charges ($89.50), and online security analysis.' },
+      { src: churnUsecases, alt: 'Use Cases & Churn Drivers', caption: 'Application use cases with sample churn drivers — month-to-month contract (92%), fiber optic + no security (78%), tenure < 12 months (71%), and more.' },
+      { src: churnPredictor, alt: 'Churn Predictor Form', caption: 'Interactive predictor form with demographics, account info (tenure, monthly charges), contract type, payment method, and service configuration.' },
+      { src: churnServices, alt: 'Services Configuration', caption: 'Service selection panel with phone service, multiple lines, internet service (fiber optic), and other configurable parameters for prediction.' },
+      { src: churnResults, alt: 'Prediction Results', caption: '50% churn probability with "High Risk" classification, actionable recommendations: offer retention discount, contact customer, review pricing structure.' },
+      { src: churnHistory, alt: 'Prediction History', caption: 'History dashboard with total predictions (3), high risk count (1), average score (25.7%), and searchable/filterable prediction log table.' },
+      { src: churnCta, alt: 'Call to Action', caption: 'Bottom CTA section — "Ready to Predict Churn?" with Launch Predictor and Visit Portfolio buttons, plus footer with navigation links.' },
+    ],
     detailedDescription: {
       overview: 'This project is a behavioral analytics prototype that demonstrates how businesses predict customer churn before it happens. Built around a simulated subscription-based platform, it models the full lifecycle of user engagement and disengagement patterns.',
       coreConcept: 'The core insight driving this project is that churn is not sudden — it is the final stage of measurable disengagement. Users exhibit declining activity patterns across multiple signals: login frequency, transaction activity, support interactions, and engagement metrics. The system analyzes these behavioral patterns over time and generates a Churn Probability Score indicating the likelihood of a customer leaving the service.',

@@ -1,12 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { ThemeToggle } from './ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { photographerInfo } from '@/data/photographer';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -22,6 +21,85 @@ const navLinks = [
  * Transparent on hero section, solid when scrolled
  * Mobile responsive with hamburger menu
  */
+// 3 animation variants that cycle every 2 seconds
+const pAnimations = [
+  // 1: Typewriter expand
+  {
+    collapsed: { width: 0, opacity: 0 },
+    expanded: { width: 'auto', opacity: 1, transition: { duration: 0.35 } },
+    exit: { width: 0, opacity: 0, transition: { duration: 0.25 } },
+  },
+  // 2: Blur reveal
+  {
+    collapsed: { opacity: 0, filter: 'blur(8px)', width: 0 },
+    expanded: { opacity: 1, filter: 'blur(0px)', width: 'auto', transition: { duration: 0.35 } },
+    exit: { opacity: 0, filter: 'blur(8px)', width: 0, transition: { duration: 0.25 } },
+  },
+  // 3: Slide up reveal
+  {
+    collapsed: { opacity: 0, y: 12, width: 0 },
+    expanded: { opacity: 1, y: 0, width: 'auto', transition: { duration: 0.3 } },
+    exit: { opacity: 0, y: -12, width: 0, transition: { duration: 0.2 } },
+  },
+];
+
+function AnimatedName() {
+  const [expanded, setExpanded] = useState(false);
+  const [animIndex, setAnimIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setExpanded(prev => {
+        if (!prev) {
+          // expanding — pick next animation style
+          setAnimIndex(i => (i + 1) % 3);
+        }
+        return !prev;
+      });
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const variant = pAnimations[animIndex];
+
+  return (
+    <span className="inline-flex items-baseline whitespace-nowrap">
+      ANSHUL{' '}
+      <span
+        className="relative inline-flex items-baseline cursor-pointer"
+        onClick={() => setExpanded(e => !e)}
+        onMouseEnter={() => setExpanded(true)}
+        onTouchStart={() => setExpanded(true)}
+      >
+        <AnimatePresence mode="wait">
+          {expanded ? (
+            <motion.span
+              key="prakash"
+              initial={variant.collapsed as any}
+              animate={variant.expanded as any}
+              exit={variant.exit as any}
+              className="overflow-hidden inline-block"
+              style={{ whiteSpace: 'nowrap' }}
+            >
+              PRAKASH
+            </motion.span>
+          ) : (
+            <motion.span
+              key="p"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 0.15 } }}
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+            >
+              P.
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </span>
+      {' '}RATHOD
+    </span>
+  );
+}
+
 export function Header() {
   const location = useLocation();
   const { isScrolled } = useScrollPosition();
@@ -57,7 +135,7 @@ export function Header() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              {photographerInfo.name.toUpperCase()}
+              <AnimatedName />
             </motion.span>
           </Link>
 
