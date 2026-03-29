@@ -39,16 +39,17 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div className="relative min-h-screen bg-black">
+    <div className="relative min-h-screen bg-background text-foreground">
+      {/* Dynamic Back Button */}
       <motion.button
         onClick={() => navigate('/portfolio')}
-        className="fixed top-24 left-6 z-50 w-12 h-12 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all shadow-2xl group"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
+        className="fixed top-6 left-6 z-[100] w-10 h-10 rounded-full bg-background/20 backdrop-blur-md border border-foreground/10 flex items-center justify-center hover:bg-background/40 transition-all shadow-lg group"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5 }}
-        title="Return to Portfolio Arsenal"
+        title="Return to Portfolio"
       >
-        <ArrowLeft className="size-6 text-white group-hover:-translate-x-1 transition-transform" />
+        <ArrowLeft className="size-5 text-foreground group-hover:-translate-x-1 transition-transform" />
       </motion.button>
 
       <Suspense fallback={<LoadingFallback />}>

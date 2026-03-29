@@ -38,7 +38,7 @@ const GenericProjectDetail: React.FC<GenericProjectDetailProps> = ({ project }) 
   };
 
   return (
-    <div className="min-h-screen bg-black text-white pt-24 pb-20">
+    <div className="min-h-screen bg-background text-foreground pt-24 pb-20">
       <motion.div 
         className="max-w-7xl mx-auto px-6"
         variants={containerVariants}

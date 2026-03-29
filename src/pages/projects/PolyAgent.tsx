@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // ──────────────────────────────────────────────────────────
 //  PROJECT #01 — PolyAgent
@@ -398,7 +399,7 @@ export default function PolyAgent() {
       {/* NAV */}
       <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E2E8F0", padding: "0 32px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <a href="../index.html" style={{ color: "#64748B", fontSize: 13, textDecoration: "none" }}>← Anshul's Projects</a>
+          <Link to="/portfolio" style={{ color: "#64748B", fontSize: 13, textDecoration: "none" }}>← Anshul's Projects</Link>
           <span style={{ color: "#CBD5E1" }}>|</span>
           <span style={{ fontSize: 13, fontWeight: 700, color: "#7C3AED" }}>Project #01</span>
           <span style={{ background: "#7C3AED", color: "#fff", borderRadius: 20, padding: "2px 10px", fontSize: 11, fontWeight: 600 }}>RANK #1</span>

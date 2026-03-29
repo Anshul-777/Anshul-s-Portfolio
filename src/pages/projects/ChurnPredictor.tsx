@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useCredits } from "../../contexts/CreditContext";
 
 // ──────────────────────────────────────────────────────────
@@ -520,9 +521,9 @@ Please begin by planning the directory structure, and then implement the files.`
         display: "flex", alignItems: "center", justifyContent: "space-between"
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <a href="../index.html" style={{ color: "#64748B", fontSize: 13, textDecoration: "none", display: "flex", alignItems: "center", gap: 6 }}>
+          <Link to="/portfolio" style={{ color: "#64748B", fontSize: 13, textDecoration: "none", display: "flex", alignItems: "center", gap: 6 }}>
             ← Anshul's Projects
-          </a>
+          </Link>
           <span style={{ color: "#CBD5E1" }}>|</span>
           <span style={{ fontSize: 13, fontWeight: 700, color: "#0891B2" }}>Project #16</span>
           <span style={{

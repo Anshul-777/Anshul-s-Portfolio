@@ -29,7 +29,7 @@ export function CertificatesHighlight() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {certificates.slice(0, 6).map((cert, i) => (
+            {certificates.slice(0, 9).map((cert, i) => (
               <motion.div
                 key={cert.id}
                 className="group rounded-xl border border-border bg-card/60 backdrop-blur-sm p-5 space-y-3 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 gradient-border"

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useCredits } from "../../contexts/CreditContext";
 
 // ──────────────────────────────────────────────────────────
@@ -53,7 +54,7 @@ export default function VoiceGuard() {
       alert("Out of credits! Check back next month or upgrade your account.");
       return;
     }
-    const masterText = `You are a Senior Technical Lead. Build the "VoiceGuard" platform.\n\n` + 
+    const masterText = `You are a Senior Technical Lead. Build the "VoiceGuard" platform.\n\n` +
       Object.values(PROMPTS).join("\n\n");
     navigator.clipboard.writeText(masterText).then(() => {
       setCopiedKey("master");
@@ -64,85 +65,76 @@ export default function VoiceGuard() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-white text-slate-900 font-sans">
-      
-      {/* ── HERO ── */}
-      <section className="relative min-h-[520px] bg-gradient-to-br from-red-950 via-red-600 to-red-900 overflow-hidden flex flex-col justify-center px-6 md:px-12 py-20">
-        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_30%,#fca5a533_0%,transparent_60%),radial-gradient(circle_at_70%_70%,#ef444433_0%,transparent_60%)] blur-[80px] animate-pulse-red-slow" />
-        <style>{`@keyframes pulse-red-slow { 0% { opacity: 0.2; transform: scale(1); } 100% { opacity: 0.6; transform: scale(1.2); } } .animate-pulse-red-slow { animation: pulse-red-slow 8s infinite alternate; }`}</style>
-        
-        <div className="relative max-w-[860px] z-10">
-          <div className="flex flex-wrap gap-2.5 mb-4">
+    <div ref={pageRef} style={{ fontFamily: "'DM Sans', sans-serif", background: "#FFFFFF", color: "#0F172A" }}>
+      <section style={{
+        minHeight: 520,
+        background: "linear-gradient(135deg, #7F1D1D 0%, #DC2626 40%, #991B1B 100%)",
+        position: "relative", overflow: "hidden",
+        display: "flex", flexDirection: "column", justifyContent: "center",
+        padding: "80px 48px 60px"
+      }}>
+        <div style={{
+          position: "absolute", inset: 0, opacity: 0.3,
+          background: "radial-gradient(circle at 30% 30%, #fca5a533 0%, transparent 60%), radial-gradient(circle at 70% 70%, #ef444433 0%, transparent 60%)",
+          filter: "blur(80px)", animation: "pulse-red 8s infinite alternate"
+        }} />
+        <style>{`@keyframes pulse-red { 0% { opacity: 0.2; transform: scale(1); } 100% { opacity: 0.6; transform: scale(1.2); } }`}</style>
+        <div style={{ position: "relative", maxWidth: 860, zIndex: 10 }}>
+          <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
             {["#42", "AI Security / Audio ML", "EXTREME Complexity", "Rank 42/75"].map((tag, i) => (
-              <span key={i} className="bg-white/10 border border-white/20 text-white/90 rounded-full px-3 py-1 text-[11px] font-semibold">
-                {tag}
-              </span>
+              <span key={i} style={{
+                background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)",
+                color: "rgba(255,255,255,0.85)", borderRadius: 20, padding: "3px 12px", fontSize: 11, fontWeight: 600
+              }}>{tag}</span>
             ))}
           </div>
-          
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-3">
-            VoiceGuard <span className="text-red-200 font-light text-3xl md:text-5xl">Deepfake Detection</span>
+          <h1 style={{ fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 800, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 12 }}>
+            VoiceGuard <span style={{ color: "#FECACA", fontWeight: 300 }}>Deepfake Detection</span>
           </h1>
-          
-          <p className="text-lg text-white/80 max-w-2xl leading-relaxed mb-10">
+          <p style={{ fontSize: 18, color: "rgba(255,255,255,0.8)", maxWidth: 640, lineHeight: 1.6, marginBottom: 28 }}>
             A real-time detection API that identifies AI-synthesized voice content and voice cloning attacks to prevent financial fraud and identity theft.
           </p>
-          
-          <div className="flex flex-wrap gap-3">
-            <button 
-              onClick={() => scrollTo("architecture")}
-              className="bg-white text-red-700 px-6 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors shadow-lg"
-            >
+          <div style={{ display: "flex", gap: 12 }}>
+            <button onClick={() => scrollTo("architecture")}
+              style={{ background: "#FFFFFF", color: "#DC2626", border: "none", padding: "12px 24px", borderRadius: 10, fontWeight: 700 }}>
               Deep Dive
             </button>
-            <button 
-              onClick={copyMasterPrompt}
-              className={`px-6 py-3 rounded-xl font-bold border border-white/30 transition-all shadow-lg ${
-                copiedKey === "master" ? "bg-emerald-600 text-white border-emerald-500" : "bg-white/10 text-white hover:bg-white/20"
-              }`}
-            >
+            <button onClick={copyMasterPrompt}
+              style={{ background: copiedKey === "master" ? "#059669" : "rgba(255,255,255,0.12)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", padding: "12px 24px", borderRadius: 10, fontWeight: 700 }}>
               {copiedKey === "master" ? "✓ Copied!" : "✨ Copy Master Prompt"}
             </button>
           </div>
         </div>
       </section>
 
-      {/* ── CONTENTS ── */}
-      <main className="max-w-5xl mx-auto px-6 py-16">
-        
+      <main style={{ maxWidth: 1000, margin: "0 auto", padding: "60px 24px" }}>
+
         {/* PREMIUM STATS ROW */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-red-100 border border-red-100 rounded-2xl overflow-hidden mb-16 shadow-sm">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#FEE2E2", border: "1px solid #FEE2E2", borderRadius: 16, overflow: "hidden", marginBottom: 60 }}>
           {[
             { label: "Inference", val: "42ms" },
             { label: "False Pos.", val: "<0.4%" },
             { label: "Model Ensem.", val: "5" },
             { label: "Rank", val: "#42/75" }
           ].map((s, i) => (
-            <div key={i} className="bg-white p-6 md:p-8 text-center flex flex-col justify-center">
-              <div className="text-[11px] font-bold text-red-800 uppercase tracking-wider mb-1.5">{s.label}</div>
-              <div className="text-2xl md:text-3xl font-black text-red-950">{s.val}</div>
+            <div key={i} style={{ padding: 24, background: "#FFFFFF", textAlign: "center" }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#991B1B", textTransform: "uppercase", letterSpacing: 1, marginBottom: 4 }}>{s.label}</div>
+              <div style={{ fontSize: 24, fontWeight: 900, color: "#7F1D1D" }}>{s.val}</div>
             </div>
           ))}
         </div>
-
-        {/* ARCHITECTURE SUMMARY */}
-        <section id="architecture" className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-            <span className="text-red-600">⚙️</span> Core Architecture
-          </h2>
-          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 md:p-10 leading-relaxed text-slate-700">
-            <p className="text-lg">
-              Ensemble of 5 independent models including <strong className="text-red-900">RawNet2</strong> for waveform analysis and custom prosodic feature extractors. Analyzes pitch trajectory, speaking rate, and spectral artifacts from vocoders. Real-time processing via WebSockets with continuous adversarial training against the latest TTS models.
+        <section id="architecture" style={{ marginBottom: 60 }}>
+          <h2 style={{ fontSize: 24, fontWeight: 800, marginBottom: 20 }}>⚙️ Core Architecture</h2>
+          <div style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 16, padding: 32 }}>
+            <p style={{ fontSize: 15, lineHeight: 1.8, color: "#334155" }}>
+              Ensemble of 5 independent models including RawNet2 for waveform analysis and custom prosodic feature extractors. Analyzes pitch trajectory, speaking rate, and spectral artifacts from vocoders. Real-time processing via WebSockets with continuous adversarial training against the latest TTS models.
             </p>
           </div>
         </section>
 
-        {/* FEATURES OVERVIEW */}
-        <section id="features" className="mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-            <span className="text-red-600">✅</span> Capabilities
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <section id="features" style={{ marginBottom: 60 }}>
+          <h2 style={{ fontSize: 24, fontWeight: 800, marginBottom: 20 }}>✅ Capabilities</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {[
               "Sub-50ms latency WebSocket analysis",
               "Synthesis type classification (TTS vs. VC)",
@@ -151,33 +143,28 @@ export default function VoiceGuard() {
               "Mobile SDK for secure voice authentication",
               "Timestamped evidence logging",
             ].map((f, i) => (
-              <div key={i} className="p-5 border border-slate-200 rounded-xl hover:border-red-300 transition-colors bg-white group shadow-sm">
-                <span className="text-red-600 font-black mr-3 opacity-50 group-hover:opacity-100 transition-opacity">{(i+1).toString().padStart(2, '0')}</span>
-                <span className="text-[15px] font-medium text-slate-700">{f}</span>
+              <div key={i} style={{ padding: 16, border: "1px solid #E2E8F0", borderRadius: 12 }}>
+                <span style={{ color: "#DC2626", fontWeight: 800, marginRight: 8 }}>{i + 1}.</span>
+                <span style={{ fontSize: 14, color: "#1E293B" }}>{f}</span>
               </div>
             ))}
           </div>
         </section>
 
-        {/* PROMPTS SECTION */}
-        <section id="prompts" className="mb-16 text-slate-900">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl md:text-3xl font-bold">🤖 AI Build Prompts</h2>
+        <section id="prompts" style={{ marginBottom: 60 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+            <Link to="/portfolio" style={{ color: "#64748B", fontSize: 13, textDecoration: "none" }}>← Anshul's Projects</Link>
+            <h2 style={{ fontSize: 24, fontWeight: 800, margin: 0 }}>🤖 AI Build Prompts</h2>
           </div>
-          <div className="grid gap-3">
+          <div style={{ display: "grid", gap: 12 }}>
             {Object.entries(PROMPTS).map(([key, text]) => (
-              <div key={key} className="bg-white border border-slate-200 rounded-2xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:shadow-md transition-shadow">
-                <div className="flex-1">
-                  <h4 className="text-base font-bold text-slate-900 capitalize mb-1">{key} Module Prompt</h4>
-                  <p className="text-xs text-slate-500 line-clamp-1">{text}</p>
+              <div key={key} style={{ background: "#fff", border: "1px solid #E2E8F0", borderRadius: 12, padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div>
+                  <h4 style={{ margin: 0, fontSize: 15, fontWeight: 700, textTransform: "capitalize" }}>{key} Module Prompt</h4>
+                  <p style={{ fontSize: 12, color: "#64748B", margin: "4px 0 0" }}>{text.substring(0, 100)}...</p>
                 </div>
-                <button 
-                  onClick={() => copyPrompt(key)} 
-                  className={`w-full md:w-auto px-5 py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm ${
-                    copiedKey === key ? "bg-emerald-600 text-white" : "bg-red-600 text-white hover:bg-red-700"
-                  }`}
-                >
-                  {copiedKey === key ? "✓ Copied" : "Copy Prompt"}
+                <button onClick={() => copyPrompt(key)} style={{ background: copiedKey === key ? "#059669" : "#DC2626", color: "#fff", border: "none", padding: "8px 16px", borderRadius: 8, fontWeight: 700, cursor: "pointer", fontSize: 12 }}>
+                  {copiedKey === key ? "✓ Copied" : "Copy"}
                 </button>
               </div>
             ))}

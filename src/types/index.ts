@@ -16,6 +16,9 @@ export interface DetailedDescription {
   technicalApproach: string;
   prototype: string;
   learningOutcomes: string;
+  problem?: string;
+  solution?: string;
+  architecture?: string;
 }
 
 export interface FlowImage {
@@ -40,6 +43,9 @@ export interface Project {
   client?: string;
   camera?: string;
   location?: string;
+  fullTitle?: string;
+  rank?: string;
+  difficulty?: string;
 }
 
 export interface EngineerInfo {

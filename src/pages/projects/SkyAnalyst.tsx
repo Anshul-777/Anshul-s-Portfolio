@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // ──────────────────────────────────────────────────────────
 //  PROJECT #11 — SkyAnalyst
@@ -306,7 +307,7 @@ export default function SkyAnalyst() {
       {/* NAV */}
       <nav style={{ position: "sticky", top: 0, zIndex: 50, background: "rgba(255,255,255,0.97)", backdropFilter: "blur(12px)", borderBottom: "1px solid #E2E8F0", padding: "0 32px", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <a href="../index.html" style={{ color: "#64748B", fontSize: 13, textDecoration: "none" }}>← Anshul's Projects</a>
+          <Link to="/portfolio" style={{ color: "#64748B", fontSize: 13, textDecoration: "none" }}>← Anshul's Projects</Link>
           <span style={{ color: "#CBD5E1" }}>|</span>
           <span style={{ fontSize: 13, fontWeight: 700, color: ACCENT }}>Project #11</span>
           <span style={{ background: "#FEF3C7", color: "#92400E", border: "1px solid #FDE68A", borderRadius: 20, padding: "2px 10px", fontSize: 11, fontWeight: 600 }}>EXTREME</span>
@@ -506,8 +507,7 @@ export default function SkyAnalyst() {
                 <rect x={410} y={290} width={340} height={52} rx="8" fill="#1E293B" stroke="#059669" strokeWidth="1.5" />
                 <text x={580} y={312} fontSize="11" fill="#6EE7B7" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontWeight="700">GPT-4o Report Narration</text>
                 <text x={580} y={327} fontSize="8.5" fill="#64748B" textAnchor="middle" fontFamily="DM Sans, sans-serif">Structured metrics → Plain-English intelligence</text>
-                <text x={580} y={340} fontSize="8.5" fill="#64748B" textAnchor="middle" fontFamily="DM Sans, sans-serif">Alert generation when metric changes > threshold</text>
-
+                <text x={580} y={340} fontSize="8.5" fill="#64748B" textAnchor="middle" fontFamily="DM Sans, sans-serif">Alert generation when metric changes &gt; threshold</text>
                 {/* Arrows down */}
                 <line x1={220} y1={342} x2={220} y2={360} stroke="#334155" strokeWidth="1.5" />
                 <line x1={580} y1={342} x2={580} y2={360} stroke="#334155" strokeWidth="1.5" />

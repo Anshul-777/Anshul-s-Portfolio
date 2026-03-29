@@ -53,8 +53,12 @@ const App = () => (
           <Sonner />
           <BrowserRouter>
             <SkipToContent />
-            <div className="vibrant-glow" />
-            <Layout>
+          <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none opacity-0 vibrant:opacity-100">
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[120px] animate-pulse-slow" />
+          </div>
+          <div className="vibrant-glow" />
+          <Layout>
               <Suspense fallback={<LoadingFallback />}>
                 <AnimatedRoutes />
               </Suspense>

@@ -2,6 +2,11 @@ import ibmBadge from '@/assets/certificates/ibm-ai-badge.jpg';
 import ibmCert from '@/assets/certificates/ibm-ai-certificate.jpg';
 import googleAdkAgents from '@/assets/certificates/google-adk-agents.jpg';
 import googleAdkFirst from '@/assets/certificates/google-adk-first-agent.jpg';
+import googleAdkEngineer from '@/assets/certificates/google-adk-engineer.png';
+import googleGenAiChatbot from '@/assets/certificates/google-genai-chatbot.png';
+import googleOptimizeAgent from '@/assets/certificates/google-optimize-agent.png';
+import googleGenAiConcepts from '@/assets/certificates/google-genai-concepts.png';
+import googleAgentTools from '@/assets/certificates/google-agent-tools.png';
 import nxtwaveGenai from '@/assets/certificates/nxtwave-genai.jpg';
 import sihHackathon from '@/assets/certificates/sih-hackathon.jpg';
 
@@ -39,6 +44,91 @@ export const certificates: Certificate[] = [
     ],
     description:
       'Comprehensive program covering the technical and practical foundations of artificial intelligence — from Machine Learning algorithms and Neural Networks to Generative AI mechanics and AI Ethics. Covers NLP, Computer Vision, and responsible AI development practices.',
+  },
+  {
+    id: 'google-adk-engineer',
+    title: 'Engineer AI Agents with Agent Development Kit (ADK)',
+    issuer: 'Google Cloud · Skill Badge',
+    date: '2026',
+    image: googleAdkEngineer,
+    category: 'badge',
+    credlyProfile: 'https://www.credly.com/users/anshul-rathod.37fcdcf5',
+    highlights: [
+      'Intermediate Skill Badge',
+      'Advanced agent orchestration',
+      'Production-scale AI agents',
+      'Model optimization for agents',
+    ],
+    description:
+      'Intermediate-level Google Cloud Skill Badge for engineering advanced AI agents. Focuses on architecting autonomous workflows, handling complex goals, and optimizing agent behavior for production environments using the ADK.',
+  },
+  {
+    id: 'google-genai-chatbot',
+    title: 'Gen AI: Beyond the Chatbot',
+    issuer: 'Google Cloud · Completion Badge',
+    date: 'March 2026',
+    image: googleGenAiChatbot,
+    category: 'badge',
+    credlyProfile: 'https://www.credly.com/users/anshul-rathod.37fcdcf5',
+    highlights: [
+      'Generative AI system design',
+      'Agentic workflow integration',
+      'Stateful conversation management',
+      'Real-world GenAI deployment',
+    ],
+    description:
+      'Google Cloud completion badge focused on building Generative AI applications that extend beyond simple chatbots to complex, agentic systems capable of executing multi-step business logic.',
+  },
+  {
+    id: 'google-optimize-agent',
+    title: 'Optimize Agent Behavior',
+    issuer: 'Google Cloud · Completion Badge',
+    date: 'March 2026',
+    image: googleOptimizeAgent,
+    category: 'badge',
+    credlyProfile: 'https://www.credly.com/users/anshul-rathod.37fcdcf5',
+    highlights: [
+      'Agent performance tuning',
+      'Instruction-following calibration',
+      'Cost and latency optimization',
+      'Agent behavior evaluation',
+    ],
+    description:
+      'Google Cloud completion badge for specialists in agent behavior optimization. Covers advanced techniques for improving instruction following, reducing cognitive overhead, and balancing performance with system constraints.',
+  },
+  {
+    id: 'google-genai-foundational',
+    title: 'Gen AI: Unlock Foundational Concepts',
+    issuer: 'Google Cloud · Completion Badge',
+    date: 'March 2026',
+    image: googleGenAiConcepts,
+    category: 'badge',
+    credlyProfile: 'https://www.credly.com/users/anshul-rathod.37fcdcf5',
+    highlights: [
+      'Transformer architecture fundamentals',
+      'Tokenization and attention mechanisms',
+      'Model pre-training paradigms',
+      'Foundational LLM concepts',
+    ],
+    description:
+      'Foundational Google Cloud badge validating deep understanding of the underlying principles of Generative AI, from attention mechanisms in Transformers to the mechanics of large-scale model training.',
+  },
+  {
+    id: 'google-agent-tools',
+    title: 'Add Agent Capabilities with Tools',
+    issuer: 'Google Cloud · Completion Badge',
+    date: 'March 2026',
+    image: googleAgentTools,
+    category: 'badge',
+    credlyProfile: 'https://www.credly.com/users/anshul-rathod.37fcdcf5',
+    highlights: [
+      'Tool-calling & Function-calling',
+      'API-agent integration',
+      'External data source access',
+      'Secure tool execution environments',
+    ],
+    description:
+      'Google Cloud badge for mastering tool integration with AI agents. Covers implementing robust tool-calling interfaces, enabling agents to interact with external APIs, and managing data retrieval for augmented reasoning.',
   },
   {
     id: 'google-adk-agents',
