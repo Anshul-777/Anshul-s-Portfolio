@@ -27,8 +27,10 @@ export function Header() {
   const { isScrolled } = useScrollPosition();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Header is transparent only on homepage hero when not scrolled
-  const isTransparent = location.pathname === '/' && !isScrolled;
+  // Header is transparent on hero sections when not scrolled
+  const isTransparent = (location.pathname === '/' || 
+                         location.pathname === '/portfolio' || 
+                         location.pathname.startsWith('/project/')) && !isScrolled;
 
   return (
     <motion.header

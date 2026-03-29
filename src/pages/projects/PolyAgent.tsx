@@ -66,44 +66,43 @@ export default function PolyAgent() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   return (
-    <div ref={pageRef} style={{ fontFamily: "'DM Sans', sans-serif", background: "#FFFFFF", color: "#0F172A" }}>
+    <div ref={pageRef} className="min-h-screen bg-white text-slate-900 font-sans">
       
       {/* ── HERO ── */}
-      <section style={{
-        minHeight: 520,
-        background: "linear-gradient(135deg, #312E81 0%, #4F46E5 40%, #1E1B4B 100%)",
-        position: "relative", overflow: "hidden",
-        display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "80px 48px 60px"
-      }}>
-        <div style={{
-          position: "absolute", inset: 0, opacity: 0.4,
-          background: "radial-gradient(circle at 20% 30%, #a855f7 0%, transparent 50%), radial-gradient(circle at 80% 70%, #6366f1 0%, transparent 50%)",
-          filter: "blur(60px)", animation: "pulse 8s infinite alternate"
-        }} />
-        <style>{`@keyframes pulse { from { opacity: 0.2; transform: scale(1); } to { opacity: 0.5; transform: scale(1.1); } }`}</style>
-        <div style={{ position: "relative", maxWidth: 860, zIndex: 10 }}>
-          <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
+      <section className="relative min-h-[520px] bg-gradient-to-br from-indigo-900 via-indigo-600 to-slate-950 overflow-hidden flex flex-col justify-center px-6 md:px-12 py-20">
+        <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_20%_30%,#a855f7_0%,transparent_50%),radial-gradient(circle_at_80%_70%,#6366f1_0%,transparent_50%)] blur-[60px] animate-pulse-slow" />
+        <style>{`@keyframes pulse-slow { from { opacity: 0.2; transform: scale(1); } to { opacity: 0.5; transform: scale(1.1); } } .animate-pulse-slow { animation: pulse-slow 8s infinite alternate; }`}</style>
+        
+        <div className="relative max-w-[860px] z-10">
+          <div className="flex flex-wrap gap-2.5 mb-4">
             {["#01", "AGI / Agentic Workflows", "EXTREME Complexity", "Rank 01/75"].map((tag, i) => (
-              <span key={i} style={{
-                background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)",
-                color: "rgba(255,255,255,0.85)", borderRadius: 20, padding: "3px 12px", fontSize: 11, fontWeight: 600
-              }}>{tag}</span>
+              <span key={i} className="bg-white/10 border border-white/20 text-white/90 rounded-full px-3 py-1 text-[11px] font-semibold">
+                {tag}
+              </span>
             ))}
           </div>
-          <h1 style={{ fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 800, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 12 }}>
-            PolyAgent <span style={{ color: "#A5B4FC", fontWeight: 300 }}>Autonomous Engine</span>
+          
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-3">
+            PolyAgent <span className="text-indigo-200 font-light text-3xl md:text-5xl">Autonomous Engine</span>
           </h1>
-          <p style={{ fontSize: 18, color: "rgba(255,255,255,0.8)", maxWidth: 640, lineHeight: 1.6, marginBottom: 28 }}>
+          
+          <p className="text-lg text-white/80 max-w-2xl leading-relaxed mb-10">
             A unified agentic brain leveraging vision-language models for UI navigation, a recursive task-decomposition engine for complex goal achievement, and a verified tool-execution layer.
           </p>
-          <div style={{ display: "flex", gap: 12 }}>
-            <button onClick={() => scrollTo("architecture")}
-              style={{ background: "#FFFFFF", color: "#4F46E5", border: "none", padding: "12px 24px", borderRadius: 10, fontWeight: 700 }}>
+          
+          <div className="flex flex-wrap gap-3">
+            <button 
+              onClick={() => scrollTo("architecture")}
+              className="bg-white text-indigo-600 px-6 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors shadow-lg"
+            >
               Deep Dive
             </button>
-            <button onClick={copyMasterPrompt}
-              style={{ background: copiedKey === "master" ? "#059669" : "rgba(255,255,255,0.12)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", padding: "12px 24px", borderRadius: 10, fontWeight: 700 }}>
+            <button 
+              onClick={copyMasterPrompt}
+              className={`px-6 py-3 rounded-xl font-bold border border-white/30 transition-all shadow-lg ${
+                copiedKey === "master" ? "bg-emerald-600 text-white border-emerald-500" : "bg-white/10 text-white hover:bg-white/20"
+              }`}
+            >
               {copiedKey === "master" ? "✓ Copied!" : "✨ Copy Master Prompt"}
             </button>
           </div>
@@ -111,22 +110,41 @@ export default function PolyAgent() {
       </section>
 
       {/* ── CONTENTS ── */}
-      <main style={{ maxWidth: 1000, margin: "0 auto", padding: "60px 24px" }}>
+      <main className="max-w-5xl mx-auto px-6 py-16">
+        
+        {/* PREMIUM STATS ROW */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-indigo-100 border border-indigo-100 rounded-2xl overflow-hidden mb-16 shadow-sm">
+          {[
+            { label: "Complexity", val: "Extreme" },
+            { label: "Stability", val: "99.9%" },
+            { label: "Rank", val: "#1/75" },
+            { label: "Status", val: "Live" }
+          ].map((s, i) => (
+            <div key={i} className="bg-white p-6 md:p-8 text-center flex flex-col justify-center">
+              <div className="text-[11px] font-bold text-indigo-600 uppercase tracking-wider mb-1.5">{s.label}</div>
+              <div className="text-2xl md:text-3xl font-black text-indigo-950">{s.val}</div>
+            </div>
+          ))}
+        </div>
         
         {/* ARCHITECTURE SUMMARY */}
-        <section id="architecture" style={{ marginBottom: 60 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 800, marginBottom: 20 }}>⚙️ Core Architecture</h2>
-          <div style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 16, padding: 32 }}>
-            <p style={{ fontSize: 15, lineHeight: 1.8, color: "#334155" }}>
-              The engine uses a hierarchical control loop. A <strong>Strategic Manager</strong> (S-Model) decomposes high-level goals into sub-tasks. An <strong>Action Agent</strong> (A-Model) executes these using a dynamic tool registry. A <strong>Verifier Agent</strong> (V-Model) monitors state changes via Vision-Encoder and cross-references against the plan, triggering <em>Self-Correction</em> if deviations are detected.
+        <section id="architecture" className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+            <span className="text-indigo-600">⚙️</span> Core Architecture
+          </h2>
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 md:p-10 leading-relaxed">
+            <p className="text-slate-600 text-lg">
+              The engine uses a hierarchical control loop. A <strong className="text-indigo-900 font-bold">Strategic Manager</strong> (S-Model) decomposes high-level goals into sub-tasks. An <strong className="text-indigo-900 font-bold">Action Agent</strong> (A-Model) executes these using a dynamic tool registry. A <strong className="text-indigo-900 font-bold">Verifier Agent</strong> (V-Model) monitors state changes via Vision-Encoder and cross-references against the plan, triggering <em className="italic">Self-Correction</em> if deviations are detected.
             </p>
           </div>
         </section>
 
         {/* FEATURES OVERVIEW */}
-        <section id="features" style={{ marginBottom: 60 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 800, marginBottom: 20 }}>✅ Capabilities</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        <section id="features" className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+            <span className="text-indigo-600">✅</span> Capabilities
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               "Autonomous goal decomposition & multi-step planning",
               "Visual grounding for non-HTML UI interaction",
@@ -135,28 +153,33 @@ export default function PolyAgent() {
               "Long-term memory with RAG-based skill retrieval",
               "Secure sandbox execution environment",
             ].map((f, i) => (
-              <div key={i} style={{ padding: 16, border: "1px solid #E2E8F0", borderRadius: 12 }}>
-                <span style={{ color: "#4F46E5", fontWeight: 800, marginRight: 8 }}>{i+1}.</span>
-                <span style={{ fontSize: 14, color: "#1E293B" }}>{f}</span>
+              <div key={i} className="p-5 border border-slate-200 rounded-xl hover:border-indigo-300 transition-colors bg-white group shadow-sm">
+                <span className="text-indigo-600 font-black mr-3 opacity-50 group-hover:opacity-100 transition-opacity">{(i+1).toString().padStart(2, '0')}</span>
+                <span className="text-[15px] font-medium text-slate-700">{f}</span>
               </div>
             ))}
           </div>
         </section>
 
         {/* PROMPTS SECTION */}
-        <section id="prompts" style={{ marginBottom: 60 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-            <h2 style={{ fontSize: 24, fontWeight: 800, margin: 0 }}>🤖 AI Build Prompts</h2>
+        <section id="prompts" className="mb-16">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">🤖 AI Build Prompts</h2>
           </div>
-          <div style={{ display: "grid", gap: 12 }}>
+          <div className="grid gap-3">
             {Object.entries(PROMPTS).map(([key, text]) => (
-              <div key={key} style={{ background: "#fff", border: "1px solid #E2E8F0", borderRadius: 12, padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div>
-                  <h4 style={{ margin: 0, fontSize: 15, fontWeight: 700, textTransform: "capitalize" }}>{key} Module Prompt</h4>
-                  <p style={{ fontSize: 12, color: "#64748B", margin: "4px 0 0" }}>{text.substring(0, 100)}...</p>
+              <div key={key} className="bg-white border border-slate-200 rounded-2xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:shadow-md transition-shadow">
+                <div className="flex-1">
+                  <h4 className="text-base font-bold text-slate-900 capitalize mb-1">{key} Module Prompt</h4>
+                  <p className="text-xs text-slate-500 line-clamp-1">{text}</p>
                 </div>
-                <button onClick={() => copyPrompt(key)} style={{ background: copiedKey === key ? "#059669" : "#4F46E5", color: "#fff", border: "none", padding: "8px 16px", borderRadius: 8, fontWeight: 700, cursor: "pointer", fontSize: 12 }}>
-                  {copiedKey === key ? "✓ Copied" : "Copy"}
+                <button 
+                  onClick={() => copyPrompt(key)} 
+                  className={`w-full md:w-auto px-5 py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm ${
+                    copiedKey === key ? "bg-emerald-600 text-white" : "bg-indigo-600 text-white hover:bg-indigo-700"
+                  }`}
+                >
+                  {copiedKey === key ? "✓ Copied" : "Copy Prompt"}
                 </button>
               </div>
             ))}

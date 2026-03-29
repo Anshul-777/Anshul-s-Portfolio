@@ -51,7 +51,7 @@ export const ParticleVortex: React.FC = () => {
         y: isInitial ? Math.random() * height : height + 50,
         z: Math.random() * 400 - 200,
         vx: 0,
-        vy: -(Math.random() * 2 + 1),
+        vy: -(Math.random() * 0.4 + 0.2), // Reduced for cinematic effect
         vz: 0,
         size: Math.random() * 2 + 0.5,
         color: currentColors[Math.floor(Math.random() * currentColors.length)],
@@ -88,14 +88,14 @@ export const ParticleVortex: React.FC = () => {
       particles.forEach((p, i) => {
         // Vertical motion: Faster at the top
         const normalizedY = p.y / height;
-        const speedMultiplier = 1 + (1 - normalizedY) * 3;
+        const speedMultiplier = 1 + (1 - normalizedY) * 1.5; // Reduced from 2 to 1.5
         p.y += p.vy * speedMultiplier;
 
-        // Swirling vortex motion
-        p.angle += 0.02 * speedMultiplier;
+        // Swirling vortex motion: Slower attraction speed
+        p.angle += 0.003 * speedMultiplier; // Reduced from 0.006 to 0.003
         // Reversed vortex: Wider at the top
         const baseRadius = p.radius;
-        const radiusAtY = Math.max(1, baseRadius * (1 + (1 - normalizedY) * 1.5));
+        const radiusAtY = Math.max(1, baseRadius * (1 + (1 - normalizedY) * 1.2));
         
         const targetX = width / 2 + Math.cos(p.angle) * radiusAtY;
         const targetZ = Math.sin(p.angle) * radiusAtY;

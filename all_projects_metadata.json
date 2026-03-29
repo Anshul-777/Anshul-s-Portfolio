@@ -1,25 +1,11 @@
-import type { Project } from '@/types';
-import projectChurn from '@/assets/project-churn.jpg';
-
-import aegisLanding from '@/assets/aegispay/01-landing.jpg';
-import aegisLogin from '@/assets/aegispay/02-login.jpg';
-import aegisDashboard from '@/assets/aegispay/03-dashboard.jpg';
-import aegisServices from '@/assets/aegispay/04-services.jpg';
-import aegisQR from '@/assets/aegispay/05-qrcode.jpg';
-import aegisPayment from '@/assets/aegispay/06-payment.jpg';
-import aegisSuccess from '@/assets/aegispay/07-success.jpg';
-import aegisProfile from '@/assets/aegispay/08-profile.jpg';
-import aegisMLLayers from '@/assets/aegispay/09-ml-layers.jpg';
-import aegisAccuracy from '@/assets/aegispay/10-accuracy.jpg';
-
-export const projects: Project[] = [
+[
   {
     "id": "1",
     "title": "PolyAgent",
     "fullTitle": "PolyAgent: Multi-Agent Enterprise Research Synthesis Network",
     "category": "ai",
     "year": "2024",
-    "slug": "poly-agent",
+    "slug": "polyagent",
     "rank": "1 of 75",
     "difficulty": "MEDIUM",
     "description": "Orchestrated LLM agent swarm that autonomously\n            decomposes enterprise research queries, dispatches specialist sub-agents, reconciles conflicting data, and\n            delivers verified, cited, boardroom-ready intelligence reports in under 90 seconds.",
@@ -179,7 +165,7 @@ export const projects: Project[] = [
     "fullTitle": "SkyAnalyst: Satellite Imagery Intelligence Platform for Asset\n            Monitoring",
     "category": "ai",
     "year": "2024",
-    "slug": "sky-analyst",
+    "slug": "skyanalyst",
     "rank": "11 of 75",
     "difficulty": "MEDIUM",
     "description": "A satellite imagery analysis platform that uses\n            multi-spectral deep learning models to monitor, count, classify, and track physical assets (vehicles, ships,\n            construction equipment, oil tanks, agricultural machinery) from commercially available satellite imagery at\n            global scale, providing actionable intelligence to commodities traders, insurance companies, and supply\n            chain analysts.",
@@ -259,7 +245,7 @@ export const projects: Project[] = [
     "fullTitle": "ChurnPredictor: AI-Powered Customer Revenue Intelligence and\n            Retention Platform",
     "category": "ai",
     "year": "2024",
-    "slug": "churn-prediction",
+    "slug": "churnpredictor",
     "rank": "16 of 75",
     "difficulty": "HIGH",
     "description": "A SaaS platform that integrates with any product\n            database, usage analytics, and CRM to build customer-specific churn propensity scores using gradient\n            boosting models, identify at-risk customers 60\u201390 days before they churn, trigger automated personalized\n            retention workflows, and calculate the revenue impact of every intervention.",
@@ -267,8 +253,7 @@ export const projects: Project[] = [
       "problem": "<div class=\"section-content\">\n              <p>Customer churn is the existential threat for every subscription business. A company with 5% monthly\n                churn has a customer lifetime of only 20 months \u2014 meaning every customer relationship must pay back its\n                acquisition cost in under two years. This math kills most SaaS businesses before they scale.</p>\n              <p>The deeply frustrating aspect: most churn is predictable. Research consistently shows that churned\n                customers exhibit behavioral signals 30\u201390 days before cancellation: declining login frequency,\n                decreased feature usage, reduced team collaboration, failed payment attempts, support ticket volume\n                spikes, or in B2B, executive sponsor departure. These signals exist in every product's database \u2014 but no\n                one is watching all of them simultaneously for all customers.</p>\n              <p>Customer Success teams try to monitor these signals manually, but a 3-person CS team covering 500\n                accounts cannot track behavioral signals across all accounts simultaneously. They operate on gut feel,\n                focusing on their loudest, not their most at-risk, customers. By the time a customer messages about\n                canceling, the decision is usually already made.</p>\n              <p>ChurnPredictor automates the signal monitoring, prediction, and intervention pipeline \u2014 giving CS teams\n                an early warning system that identifies exactly which customers to call today and what to offer them.\n              </p>",
       "solution": "<div class=\"section-content\">\n              <p>ChurnPredictor connects to the customer's product database, usage analytics (Mixpanel, Amplitude,\n                Segment), payment processor (Stripe), and CRM (Salesforce, HubSpot) via API. It builds a behavioral\n                feature matrix per customer account, trains a gradient boosting churn model calibrated to the company's\n                specific churn patterns, generates daily risk scores with explanations, and triggers automated\n                personalized outreach workflows for at-risk customers \u2014 complete with talking points for CS reps.</p>",
       "architecture": "<div class=\"section-content solution-text\">\n              <h4 class=\"arch-heading\">Data Integration Layer:</h4>\n              <p>Native connectors for:</p>\n              <p>- Usage data: Mixpanel, Amplitude, Segment, custom event tracking</p>\n              <p>- Product database: direct PostgreSQL/MySQL connection for feature usage queries</p>\n              <p>- Payment: Stripe, Chargebee, Recurly \u2014 subscription status, payment history, plan changes</p>\n              <p>- CRM: Salesforce, HubSpot \u2014 contact, account, opportunity, activity data</p>\n              <p>- Support: Intercom, Zendesk \u2014 ticket volume, sentiment, resolution time</p>\n              <p>- Communication: Slack, Email (last outreach date, engagement)</p>\n              <p>Feature Engineering:</p>\n              <p>Automatically computes 150+ churn-predictive features per account:</p>\n              <p>- Usage features: DAU/WAU/MAU, feature adoption depth, session frequency/length, last login</p>\n              <p>- Adoption features: % of paid features used, onboarding completion score, integration depth</p>\n              <p>- Health features: support ticket frequency, sentiment trend, payment failure history</p>\n              <p>- Relationship features: days since last CS contact, executive sponsor activity, contract age</p>\n              <p>- Engagement features: email open rate, product announcement clicks, NPS score</p>\n              <p>- Trend features: 30/60/90-day slope of all usage metrics (declining usage is the strongest signal)</p>\n              <p>Churn Prediction Model:</p>\n              <p>XGBoost classifier trained on company's own historical churn data (minimum 200 churned customers for\n                reliable training). Features:</p>\n              <p>- Automated feature selection using SHAP importance scores</p>\n              <p>- Class imbalance handling: SMOTE oversampling + class weight adjustment</p>\n              <p>- Calibrated probability output: confidence score is a true probability, not just a ranking</p>\n              <p>- Model explainability: every prediction includes the top 5 features driving the risk score</p>\n              <p>Segmentation and Alerting:</p>\n              <p>Customers automatically segmented into risk tiers: Critical (>70% 90-day churn probability), High\n                (50\u201370%), Medium (30\u201350%), Low (<30%). Daily digest email to CS\n                  team: \"10 accounts moved to Critical risk today \u2014 here are their top risk factors and recommended actions.\"\n                  </p>\n                  <p>Automated Retention Workflows:</p>\n                  <p>Based on account risk tier and identified risk factors, triggers personalized interventions:</p>\n                  <p>- Usage decline: automated in-app contextual tutorial email with specific features the account\n                    isn't using</p>\n                  <p>- Low adoption: personal outreach from CS rep with custom ROI calculation (\"You're currently using\n                    30% of features; activating X could save your team 5 hours/week\")</p>\n                  <p>- Payment failure: automated intelligent dunning sequence (3 increasingly personal emails over 7\n                    days)</p>\n                  <p>- Executive sponsor departure: alert to CS rep with recommendation to initiate executive\n                    re-engagement</p>\n                  <p>Revenue Impact Dashboard:</p>\n                  <p>For every intervention: tracks whether the customer churned or retained. Calculates: revenue saved\n                    (MRR * contract months remaining), CS team efficiency (accounts managed per rep), churn rate trend,\n                    and cohort retention analysis showing how retention improved month-over-month since ChurnPredictor\n                    was deployed.</p>"
-    },
-    "coverImage": projectChurn
+    }
   },
   {
     "id": "17",
@@ -420,7 +405,7 @@ export const projects: Project[] = [
     "fullTitle": "ESGLens: Corporate ESG Score Generation and Climate Risk\n            Quantification Engine",
     "category": "ai",
     "year": "2024",
-    "slug": "esg-lens",
+    "slug": "esglens",
     "rank": "26 of 75",
     "difficulty": "MEDIUM",
     "description": "Real-time, independent ESG scoring platform using\n            satellite imagery, regulatory databases, NLP news analysis, and supply chain data to generate transparent,\n            weekly-updated ESG scores with full methodology documentation.",
@@ -676,7 +661,7 @@ export const projects: Project[] = [
     "fullTitle": "VoiceGuard: Real-Time Audio Deepfake and Voice Fraud Detection\n            Platform",
     "category": "ai",
     "year": "2024",
-    "slug": "voice-guard",
+    "slug": "voiceguard",
     "rank": "42 of 75",
     "difficulty": "MEDIUM",
     "description": "A real-time audio stream analysis API that detects\n            AI-synthesized voice content (deepfakes) and voice cloning attacks with 99%+ accuracy and <50ms latency,\n              designed for financial institution call centers, government identity verification, and media authenticity\n              verification\u2014preventing the $3B annual fraud enabled by voice synthesis attacks.",
@@ -1213,28 +1198,5 @@ export const projects: Project[] = [
       "solution": "<div class=\"section-content\">\n              <p>A no-code application builder where users describe business applications in natural language, and the\n                platform generates complete full-stack applications (database schema, backend APIs, frontend UI,\n                business logic, integrations) that are production-deployable\u2014targeting the 80% of enterprise software\n                needs that are custom internal tools which cost $200K-$2M each to build traditionally, delivering them\n                in hours at $500/month.</p>",
       "architecture": "<div class=\"section-content solution-text\">\n              <p>Application Generation Pipeline: Input: natural language description of desired application.\n                Requirements extraction: GPT-4o structured output extracts: entities (data models), operations (CRUD +\n                business logic), user roles, integrations required, UI preferences. Database Schema Generation:\n                PostgreSQL schema from extracted entities with appropriate relationships, constraints, indexes. Database\n                migration files generated with Alembic. Schema validation against normalization and performance\n                requirements. Backend API Generation: FastAPI application generated from schema + operations. All CRUD\n                endpoints. Business logic endpoints from natural language description. Authentication (JWT),\n                authorization (RBAC), input validation generated automatically. OpenAPI spec auto-generated. Test suite\n                generated: pytest with 100% endpoint coverage. Frontend Generation: React + TailwindCSS application\n                generated from UI requirements. Component library: forms, tables, charts, navigation generated from data\n                model. Role-based UI: different views for different user roles. Mobile-responsive by default.\n                Integration Connectors: 100+ pre-built connectors: Slack, Salesforce, Google Sheets, QuickBooks, Stripe,\n                Twilio, SendGrid. Natural language integration description: \"When a new vendor is approved, send a Slack\n                notification to #procurement\" \u2192 generates correct webhook/API call code. Deployment: One-click Docker\n                containerization. Deploy to: Railway, Render, AWS, GCP, Azure. Custom domain configuration. Environment\n                management: dev/staging/prod. Post-Generation Refinement: Natural language modification: \"Add a\n                dashboard showing monthly spend by vendor\" \u2192 modifies only relevant components. Maintain change history\n                with rollback. Export full source code: developers can take ownership and extend beyond the platform.\n              </p>"
     }
-  },
-
-];
-
-export const getProjectBySlug = (slug: string): Project | undefined => {
-  return projects.find(project => project.slug === slug);
-};
-
-export const getProjectsByCategory = (category: string): Project[] => {
-  if (category === 'all') return projects;
-  return projects.filter(project => project.category === category);
-};
-
-export const getFeaturedProjects = (): Project[] => {
-  return projects.slice(0, 4);
-};
-
-export const getAdjacentProjects = (currentSlug: string): { prev: Project | null; next: Project | null } => {
-  const currentIndex = projects.findIndex(p => p.slug === currentSlug);
-  if (currentIndex === -1) return { prev: null, next: null };
-  return {
-    prev: currentIndex > 0 ? projects[currentIndex - 1] : null,
-    next: currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
-  };
-};
+  }
+]

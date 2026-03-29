@@ -64,61 +64,85 @@ export default function ESGLens() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   return (
-    <div ref={pageRef} style={{ fontFamily: "'DM Sans', sans-serif", background: "#FFFFFF", color: "#0F172A" }}>
-      <section style={{
-        minHeight: 520,
-        background: "linear-gradient(135deg, #064E3B 0%, #059669 40%, #065F46 100%)",
-        position: "relative", overflow: "hidden",
-        display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "80px 48px 60px"
-      }}>
-        <div style={{
-          position: "absolute", inset: 0, opacity: 0.3,
-          background: "radial-gradient(circle at 10% 20%, #6ee7b733 0%, transparent 50%), radial-gradient(circle at 90% 80%, #05966933 0%, transparent 50%)",
-          filter: "blur(70px)", animation: "morph 15s infinite alternate ease-in-out"
-        }} />
-        <style>{`@keyframes morph { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translate(0,0) rotate(0deg); } 100% { border-radius: 50%; transform: translate(20px, 20px) rotate(15deg); } }`}</style>
-        <div style={{ position: "relative", maxWidth: 860, zIndex: 10 }}>
-          <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
+    <div ref={pageRef} className="min-h-screen bg-white text-slate-900 font-sans">
+      
+      {/* ── HERO ── */}
+      <section className="relative min-h-[520px] bg-gradient-to-br from-emerald-950 via-emerald-600 to-emerald-800 overflow-hidden flex flex-col justify-center px-6 md:px-12 py-20">
+        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_10%_20%,#6ee7b733_0%,transparent_50%),radial-gradient(circle_at_90%_80%,#05966933_0%,transparent_50%)] blur-[70px] animate-morph-slow" />
+        <style>{`@keyframes morph { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translate(0,0) rotate(0deg); } 100% { border-radius: 50%; transform: translate(20px, 20px) rotate(15deg); } } .animate-morph-slow { animation: morph 15s infinite alternate ease-in-out; }`}</style>
+        
+        <div className="relative max-w-[860px] z-10">
+          <div className="flex flex-wrap gap-2.5 mb-4">
             {["#26", "FinTech / Sustainability", "VERY HIGH Complexity", "Rank 26/75"].map((tag, i) => (
-              <span key={i} style={{
-                background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)",
-                color: "rgba(255,255,255,0.85)", borderRadius: 20, padding: "3px 12px", fontSize: 11, fontWeight: 600
-              }}>{tag}</span>
+              <span key={i} className="bg-white/10 border border-white/20 text-white/90 rounded-full px-3 py-1 text-[11px] font-semibold">
+                {tag}
+              </span>
             ))}
           </div>
-          <h1 style={{ fontSize: "clamp(28px, 4vw, 52px)", fontWeight: 800, color: "#FFFFFF", lineHeight: 1.1, marginBottom: 12 }}>
-            ESGLens <span style={{ color: "#6EE7B7", fontWeight: 300 }}>Reporting</span>
+          
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-3">
+            ESGLens <span className="text-emerald-300 font-light text-3xl md:text-5xl">Reporting</span>
           </h1>
-          <p style={{ fontSize: 18, color: "rgba(255,255,255,0.8)", maxWidth: 640, lineHeight: 1.6, marginBottom: 28 }}>
+          
+          <p className="text-lg text-white/80 max-w-2xl leading-relaxed mb-10">
             An institutional-grade intelligence platform that automates the collection, verification, and reporting of ESG risks across global multi-tier supply chains.
           </p>
-          <div style={{ display: "flex", gap: 12 }}>
-            <button onClick={() => scrollTo("architecture")}
-              style={{ background: "#FFFFFF", color: "#059669", border: "none", padding: "12px 24px", borderRadius: 10, fontWeight: 700 }}>
+          
+          <div className="flex flex-wrap gap-3">
+            <button 
+              onClick={() => scrollTo("architecture")}
+              className="bg-white text-emerald-700 px-6 py-3 rounded-xl font-bold hover:bg-slate-50 transition-colors shadow-lg"
+            >
               Deep Dive
             </button>
-            <button onClick={copyMasterPrompt}
-              style={{ background: copiedKey === "master" ? "#047857" : "rgba(255,255,255,0.12)", color: "#fff", border: "1px solid rgba(255,255,255,0.3)", padding: "12px 24px", borderRadius: 10, fontWeight: 700 }}>
+            <button 
+              onClick={copyMasterPrompt}
+              className={`px-6 py-3 rounded-xl font-bold border border-white/30 transition-all shadow-lg ${
+                copiedKey === "master" ? "bg-emerald-700 text-white border-emerald-600" : "bg-white/10 text-white hover:bg-white/20"
+              }`}
+            >
               {copiedKey === "master" ? "✓ Copied!" : "✨ Copy Master Prompt"}
             </button>
           </div>
         </div>
       </section>
 
-      <main style={{ maxWidth: 1000, margin: "0 auto", padding: "60px 24px" }}>
-        <section id="architecture" style={{ marginBottom: 60 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 800, marginBottom: 20 }}>⚙️ Core Architecture</h2>
-          <div style={{ background: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: 16, padding: 32 }}>
-            <p style={{ fontSize: 15, lineHeight: 1.8, color: "#334155" }}>
-              Multi-tier graph structure built from procurement data. Integrates with EPA EEIO databases for high-fidelity emission modeling. Graph algorithms identify 'Critical Hotspots' and 'Intervention Points.' Automated disclosure engine generates GRI 305/TCFD/SEC compliant reports with full provenance tracking.
+      {/* ── CONTENTS ── */}
+      <main className="max-w-5xl mx-auto px-6 py-16">
+        
+        {/* PREMIUM STATS ROW */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-emerald-100 border border-emerald-100 rounded-2xl overflow-hidden mb-16 shadow-sm">
+          {[
+            { label: "Tiers Tracked", val: "3" },
+            { label: "Suppliers", val: "14k+" },
+            { label: "Compliance", val: "CSRD" },
+            { label: "Audit Rank", val: "A+" }
+          ].map((s, i) => (
+            <div key={i} className="bg-white p-6 md:p-8 text-center flex flex-col justify-center text-center">
+              <div className="text-[11px] font-bold text-emerald-800 uppercase tracking-wider mb-1.5">{s.label}</div>
+              <div className="text-2xl md:text-3xl font-black text-emerald-950">{s.val}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* ARCHITECTURE SUMMARY */}
+        <section id="architecture" className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+            <span className="text-emerald-600">⚙️</span> Core Architecture
+          </h2>
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 md:p-10 leading-relaxed">
+            <p className="text-slate-600 text-lg">
+              Multi-tier graph structure built from procurement data. Integrates with <strong className="text-emerald-900">EPA EEIO</strong> databases for high-fidelity emission modeling. Graph algorithms identify <em className="italic text-emerald-800 font-medium">'Critical Hotspots'</em> and <em className="italic text-emerald-800 font-medium">'Intervention Points.'</em> Automated disclosure engine generates GRI 305/TCFD/SEC compliant reports with full provenance tracking.
             </p>
           </div>
         </section>
 
-        <section id="features" style={{ marginBottom: 60 }}>
-          <h2 style={{ fontSize: 24, fontWeight: 800, marginBottom: 20 }}>✅ Capabilities</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+        {/* FEATURES OVERVIEW */}
+        <section id="features" className="mb-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+            <span className="text-emerald-600">✅</span> Capabilities
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               "Automated Scope 3 Category coverage",
               "18,000+ localized emission factors integration",
@@ -127,27 +151,33 @@ export default function ESGLens() {
               "Automated CDP, GRI, TCFD disclosure generation",
               "Real-time regulatory change monitoring",
             ].map((f, i) => (
-              <div key={i} style={{ padding: 16, border: "1px solid #E2E8F0", borderRadius: 12 }}>
-                <span style={{ color: "#059669", fontWeight: 800, marginRight: 8 }}>{i+1}.</span>
-                <span style={{ fontSize: 14, color: "#1E293B" }}>{f}</span>
+              <div key={i} className="p-5 border border-slate-200 rounded-xl hover:border-emerald-300 transition-colors bg-white group shadow-sm">
+                <span className="text-emerald-600 font-black mr-3 opacity-50 group-hover:opacity-100 transition-opacity">{(i+1).toString().padStart(2, '0')}</span>
+                <span className="text-[15px] font-medium text-slate-700">{f}</span>
               </div>
             ))}
           </div>
         </section>
 
-        <section id="prompts" style={{ marginBottom: 60 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-            <h2 style={{ fontSize: 24, fontWeight: 800, margin: 0 }}>🤖 AI Build Prompts</h2>
+        {/* PROMPTS SECTION */}
+        <section id="prompts" className="mb-16 text-slate-900">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl md:text-3xl font-bold">🤖 AI Build Prompts</h2>
           </div>
-          <div style={{ display: "grid", gap: 12 }}>
+          <div className="grid gap-3">
             {Object.entries(PROMPTS).map(([key, text]) => (
-              <div key={key} style={{ background: "#fff", border: "1px solid #E2E8F0", borderRadius: 12, padding: "16px 20px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div>
-                  <h4 style={{ margin: 0, fontSize: 15, fontWeight: 700, textTransform: "capitalize" }}>{key} Module Prompt</h4>
-                  <p style={{ fontSize: 12, color: "#64748B", margin: "4px 0 0" }}>{text.substring(0, 100)}...</p>
+              <div key={key} className="bg-white border border-slate-200 rounded-2xl p-5 md:p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover:shadow-md transition-shadow">
+                <div className="flex-1">
+                  <h4 className="text-base font-bold text-slate-900 capitalize mb-1">{key} Module Prompt</h4>
+                  <p className="text-xs text-slate-500 line-clamp-1">{text}</p>
                 </div>
-                <button onClick={() => copyPrompt(key)} style={{ background: copiedKey === key ? "#047857" : "#059669", color: "#fff", border: "none", padding: "8px 16px", borderRadius: 8, fontWeight: 700, cursor: "pointer", fontSize: 12 }}>
-                  {copiedKey === key ? "✓ Copied" : "Copy"}
+                <button 
+                  onClick={() => copyPrompt(key)} 
+                  className={`w-full md:w-auto px-5 py-2.5 rounded-xl text-xs font-bold transition-all shadow-sm ${
+                    copiedKey === key ? "bg-emerald-700 text-white" : "bg-emerald-600 text-white hover:bg-emerald-700"
+                  }`}
+                >
+                  {copiedKey === key ? "✓ Copied" : "Copy Prompt"}
                 </button>
               </div>
             ))}
