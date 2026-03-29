@@ -103,7 +103,7 @@ All colors MUST be HSL.
   --ds-gray-1000-h: hsl(0, 0%, 80%);
   --ds-gray-alpha-200: hsla(0, 0%, 100%, 0.09);
   --ds-gray-alpha-400: hsla(0, 0%, 100%, 0.14);
-  --ds-background-100: hsla(0,0%,4%, 1);
+  --ds-background-100: hsla(0, 0%, 4%, 1);
   --ds-shadow-border: 0 0 0 1px rgba(255, 255, 255, 0.145);
   --ds-shadow-small: 0px 1px 2px rgba(0, 0, 0, 0.16);
   --ds-shadow-border-small: var(--ds-shadow-border), var(--ds-shadow-small);
@@ -194,15 +194,28 @@ All colors MUST be HSL.
 }
 
 @keyframes vibrant-float {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, -20px) scale(1.05); }
-  100% { transform: translate(-20px, 15px) scale(0.95); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+
+  100% {
+    transform: translate(-20px, 15px) scale(0.95);
+  }
 }
 
 /* Animated gradient border for cards in vibrant theme */
 @keyframes vibrant-border-rotate {
-  0% { --vibrant-angle: 0deg; }
-  100% { --vibrant-angle: 360deg; }
+  0% {
+    --vibrant-angle: 0deg;
+  }
+
+  100% {
+    --vibrant-angle: 360deg;
+  }
 }
 
 @property --vibrant-angle {
@@ -224,14 +237,12 @@ All colors MUST be HSL.
   inset: -2px;
   border-radius: inherit;
   padding: 2px;
-  background: conic-gradient(
-    from var(--vibrant-angle),
-    hsl(280 100% 65%),
-    hsl(190 100% 55%),
-    hsl(340 95% 60%),
-    hsl(45 100% 60%),
-    hsl(280 100% 65%)
-  );
+  background: conic-gradient(from var(--vibrant-angle),
+      hsl(280 100% 65%),
+      hsl(190 100% 55%),
+      hsl(340 95% 60%),
+      hsl(45 100% 60%),
+      hsl(280 100% 65%));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -339,6 +350,7 @@ All colors MUST be HSL.
   from {
     height: 0;
   }
+
   to {
     height: var(--radix-accordion-content-height);
   }
@@ -348,6 +360,7 @@ All colors MUST be HSL.
   from {
     height: var(--radix-accordion-content-height);
   }
+
   to {
     height: 0;
   }

@@ -19,8 +19,8 @@ export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main 
-        id="main-content" 
+      <main
+        id="main-content"
         className={`flex-1 ${isHomepage ? '' : 'pt-16'}`}
         tabIndex={-1}
       >

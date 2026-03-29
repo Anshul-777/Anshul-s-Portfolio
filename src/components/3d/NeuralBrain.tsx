@@ -74,8 +74,8 @@ function BrainScene({ theme }: { theme: string }) {
   const colors = isVibrant
     ? { nodes: ['#a855f7', '#06b6d4', '#ec4899', '#eab308', '#22c55e'], pulses: ['#f0abfc', '#67e8f9', '#f9a8d4'], bg: '#0d0015', edge: '#6d28d9' }
     : isDark
-    ? { nodes: ['#60a5fa', '#34d399', '#f472b6', '#a78bfa', '#38bdf8'], pulses: ['#93c5fd', '#6ee7b7', '#f0abfc'], bg: '#030712', edge: '#374151' }
-    : { nodes: ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#06b6d4'], pulses: ['#60a5fa', '#34d399', '#a78bfa'], bg: '#f8fafc', edge: '#cbd5e1' };
+      ? { nodes: ['#60a5fa', '#34d399', '#f472b6', '#a78bfa', '#38bdf8'], pulses: ['#93c5fd', '#6ee7b7', '#f0abfc'], bg: '#030712', edge: '#374151' }
+      : { nodes: ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#06b6d4'], pulses: ['#60a5fa', '#34d399', '#a78bfa'], bg: '#f8fafc', edge: '#cbd5e1' };
 
   const NODE_COUNT = 120;
   const nodes = useMemo(() => generateBrainNodes(NODE_COUNT), []);

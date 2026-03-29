@@ -15,8 +15,8 @@ import { CertificatesHighlight } from '@/components/portfolio/CertificatesHighli
 import { QuoteSection } from '@/components/portfolio/QuoteSection';
 import type { TechCategory } from '@/types';
 
-const NeuralBrain = lazy(() =>
-  import('@/components/3d/NeuralBrain').then((m) => ({ default: m.NeuralBrain }))
+const ParticleVortex = lazy(() =>
+  import('@/components/ui/ParticleVortex').then((m) => ({ default: m.ParticleVortex }))
 );
 
 function TypedHeadline({ text }: { text: string }) {
@@ -61,18 +61,42 @@ export default function Home() {
         {/* ── Hero Section ── */}
         <section className="relative h-screen w-full overflow-hidden bg-background">
           <Suspense fallback={null}>
-            <NeuralBrain />
+            <ParticleVortex />
           </Suspense>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background pointer-events-none" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--vibrant-glow-1)_0%,_transparent_70%)] opacity-20 blur-[120px] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/40 to-background pointer-events-none" />
           <div className="relative h-full flex flex-col items-center justify-center px-6" style={{ zIndex: 1 }}>
             <motion.div className="text-center space-y-6 max-w-4xl" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
               <motion.div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}>
                 <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" /></span>
                 <span className="text-sm font-light tracking-wide text-emerald-400">{photographerInfo.status}</span>
               </motion.div>
-              <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-extralight tracking-wide text-foreground vibrant-text-gradient" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.2 }}>{photographerInfo.name}</motion.h1>
-              <motion.p className="text-lg md:text-xl font-light tracking-wide text-muted-foreground" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }}><TypedHeadline text={photographerInfo.tagline} /></motion.p>
-              <motion.p className="text-base md:text-lg font-light leading-relaxed text-muted-foreground/80 max-w-2xl mx-auto" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.6 }}>{photographerInfo.heroIntroduction}</motion.p>
+              <motion.h1 
+                className="text-6xl md:text-8xl lg:text-9xl font-thin tracking-[0.05em] leading-tight text-foreground"
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 1.2, delay: 0.2 }}
+              >
+                <span className="vibrant-text-gradient inline-block">
+                  {photographerInfo.name}
+                </span>
+              </motion.h1>
+              <motion.p 
+                className="text-xl md:text-2xl font-light tracking-[0.2em] text-muted-foreground/90 uppercase"
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 1, delay: 0.4 }}
+              >
+                <TypedHeadline text={photographerInfo.tagline} />
+              </motion.p>
+              <motion.p 
+                className="text-base md:text-lg font-light leading-relaxed text-muted-foreground/70 max-w-2xl mx-auto italic"
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 1, delay: 0.6 }}
+              >
+                "{photographerInfo.heroIntroduction}"
+              </motion.p>
               <motion.div className="flex flex-wrap items-center justify-center gap-3 pt-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.8 }}>
                 <Link to="/portfolio" className={cn(heroButtonBase, 'bg-foreground text-background hover:bg-foreground/90 hover:scale-105 hover:shadow-lg vibrant-btn')}><Briefcase className="size-4" /> View Projects</Link>
                 <Link to="/contact" className={cn(heroButtonBase, 'border border-border text-foreground hover:bg-accent hover:scale-105 vibrant-hover')}><Mail className="size-4" /> Contact Me</Link>

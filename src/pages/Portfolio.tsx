@@ -11,7 +11,7 @@ export default function Portfolio() {
   return (
     <>
       <SEOHead title="Projects" description="Browse my ML, Data Science, and AI projects — from predictive systems to computer vision." />
-      
+
       <div className="min-h-screen">
         <section className="relative py-24 md:py-32 px-6 lg:px-8 border-b border-border">
           <div className="max-w-7xl mx-auto text-center space-y-6">
