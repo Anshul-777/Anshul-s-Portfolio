@@ -72,6 +72,12 @@ export default function VoiceGuard() {
         display: "flex", flexDirection: "column", justifyContent: "center",
         padding: "80px 48px 60px"
       }}>
+        <div style={{
+          position: "absolute", inset: 0, opacity: 0.3,
+          background: "radial-gradient(circle at 30% 30%, #fca5a533 0%, transparent 60%), radial-gradient(circle at 70% 70%, #ef444433 0%, transparent 60%)",
+          filter: "blur(80px)", animation: "pulse-red 8s infinite alternate"
+        }} />
+        <style>{`@keyframes pulse-red { 0% { opacity: 0.2; transform: scale(1); } 100% { opacity: 0.6; transform: scale(1.2); } }`}</style>
         <div style={{ position: "relative", maxWidth: 860, zIndex: 10 }}>
           <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
             {["#42", "AI Security / Audio ML", "EXTREME Complexity", "Rank 42/75"].map((tag, i) => (

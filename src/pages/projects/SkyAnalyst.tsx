@@ -72,6 +72,18 @@ export default function SkyAnalyst() {
         display: "flex", flexDirection: "column", justifyContent: "center",
         padding: "80px 48px 60px"
       }}>
+        <div style={{
+          position: "absolute", inset: 0, opacity: 0.4,
+          background: "radial-gradient(circle at 70% 20%, #7dd3fc33 0%, transparent 60%), radial-gradient(circle at 10% 80%, #0ea5e933 0%, transparent 60%)",
+          filter: "blur(80px)", animation: "float 12s infinite ease-in-out"
+        }} />
+        <style>{`@keyframes float { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.05); } 100% { transform: translateY(0) scale(1); } }`}</style>
+        <div style={{
+          position: "absolute", inset: 0, opacity: 0.4,
+          background: "radial-gradient(circle at 70% 20%, #7dd3fc33 0%, transparent 60%), radial-gradient(circle at 10% 80%, #0ea5e933 0%, transparent 60%)",
+          filter: "blur(80px)", animation: "float 12s infinite ease-in-out"
+        }} />
+        <style>{`@keyframes float { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-20px) scale(1.05); } 100% { transform: translateY(0) scale(1); } }`}</style>
         <div style={{ position: "relative", maxWidth: 860, zIndex: 10 }}>
           <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
             {["#11", "Geospatial AI / FinTech", "EXTREME Complexity", "Rank 11/75"].map((tag, i) => (

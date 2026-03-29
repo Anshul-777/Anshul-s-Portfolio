@@ -76,6 +76,12 @@ export default function PolyAgent() {
         display: "flex", flexDirection: "column", justifyContent: "center",
         padding: "80px 48px 60px"
       }}>
+        <div style={{
+          position: "absolute", inset: 0, opacity: 0.4,
+          background: "radial-gradient(circle at 20% 30%, #a855f7 0%, transparent 50%), radial-gradient(circle at 80% 70%, #6366f1 0%, transparent 50%)",
+          filter: "blur(60px)", animation: "pulse 8s infinite alternate"
+        }} />
+        <style>{`@keyframes pulse { from { opacity: 0.2; transform: scale(1); } to { opacity: 0.5; transform: scale(1.1); } }`}</style>
         <div style={{ position: "relative", maxWidth: 860, zIndex: 10 }}>
           <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
             {["#01", "AGI / Agentic Workflows", "EXTREME Complexity", "Rank 01/75"].map((tag, i) => (

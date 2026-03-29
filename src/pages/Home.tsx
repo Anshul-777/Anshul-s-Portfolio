@@ -15,8 +15,8 @@ import { CertificatesHighlight } from '@/components/portfolio/CertificatesHighli
 import { QuoteSection } from '@/components/portfolio/QuoteSection';
 import type { TechCategory } from '@/types';
 
-const ParticleVortex = lazy(() =>
-  import('@/components/ui/ParticleVortex').then((m) => ({ default: m.ParticleVortex }))
+const FluidFlow = lazy(() =>
+  import('@/components/ui/FluidFlow').then((m) => ({ default: m.FluidFlow }))
 );
 
 function TypedHeadline({ text }: { text: string }) {
@@ -60,8 +60,15 @@ export default function Home() {
       <div className="min-h-screen">
         {/* ── Hero Section ── */}
         <section className="relative h-screen w-full overflow-hidden bg-background">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="/Untitled design.png"
+              alt="Background"
+              className="w-full h-full object-cover opacity-30 scale-105"
+            />
+          </div>
           <Suspense fallback={null}>
-            <ParticleVortex />
+            <FluidFlow />
           </Suspense>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--vibrant-glow-1)_0%,_transparent_70%)] opacity-20 blur-[120px] pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/40 to-background pointer-events-none" />
@@ -71,28 +78,28 @@ export default function Home() {
                 <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" /></span>
                 <span className="text-sm font-light tracking-wide text-emerald-400">{photographerInfo.status}</span>
               </motion.div>
-              <motion.h1 
-                className="text-6xl md:text-8xl lg:text-9xl font-thin tracking-[0.05em] leading-tight text-foreground"
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
+              <motion.h1
+                className="text-6xl md:text-8xl lg:text-9xl font-thin tracking-[0.05em] leading-tight text-slate-950 dark:text-white"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.2 }}
               >
-                <span className="vibrant-text-gradient inline-block">
+                <span className="vibrant-text-gradient inline-block dark:text-white">
                   {photographerInfo.name}
                 </span>
               </motion.h1>
-              <motion.p 
-                className="text-xl md:text-2xl font-light tracking-[0.2em] text-muted-foreground/90 uppercase"
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
+              <motion.p
+                className="text-xl md:text-2xl font-light tracking-[0.2em] text-slate-900/90 dark:text-gray-200 uppercase"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
               >
                 <TypedHeadline text={photographerInfo.tagline} />
               </motion.p>
-              <motion.p 
-                className="text-base md:text-lg font-light leading-relaxed text-muted-foreground/70 max-w-2xl mx-auto italic"
-                initial={{ opacity: 0, y: 20 }} 
-                animate={{ opacity: 1, y: 0 }} 
+              <motion.p
+                className="text-base md:text-lg font-light leading-relaxed text-slate-800 dark:text-gray-300 max-w-2xl mx-auto italic"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.6 }}
               >
                 "{photographerInfo.heroIntroduction}"

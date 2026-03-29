@@ -118,6 +118,50 @@ export const projects: Project[] = [
       prototype: 'The prototype allows users to upload or stream video and observe how the system detects objects, tracks movement, and highlights suspicious activity patterns. It provides a clear demonstration of how raw surveillance data can be transformed into structured security intelligence.',
       learningOutcomes: 'This project demonstrates how surveillance data can be transformed into actionable insights without constant human monitoring. It showcases the practical application of deep learning in security systems and the engineering challenges of real-time video processing.'
     }
+  },
+  {
+    id: '5',
+    title: 'PolyAgent - Multi-Modal Autonomous Research Engine',
+    category: 'machine-learning',
+    year: '2024',
+    slug: 'poly-agent',
+    coverImage: '',
+    description: 'An autonomous agentic engine for high-order reasoning, multi-modal perception, and self-correcting tool use.',
+    technologies: ['TypeScript', 'LangChain', 'Python'],
+    images: []
+  },
+  {
+    id: '6',
+    title: 'SkyAnalyst - Geospatial Intelligence',
+    category: 'machine-learning',
+    year: '2024',
+    slug: 'sky-analyst',
+    coverImage: '',
+    description: 'Satellite Imagery Intelligence and Economic Indicator Forecasting Platform.',
+    technologies: ['PyTorch', 'Apache Airflow', 'FastAPI'],
+    images: []
+  },
+  {
+    id: '7',
+    title: 'ESGLens - ESG Risk Assessment',
+    category: 'machine-learning',
+    year: '2024',
+    slug: 'esg-lens',
+    coverImage: '',
+    description: 'Automated Supply Chain ESG Risk Assessment and Scope 3 Reporting.',
+    technologies: ['Python', 'NetworkX', 'PostgreSQL'],
+    images: []
+  },
+  {
+    id: '8',
+    title: 'VoiceGuard - Deepfake Detection',
+    category: 'machine-learning',
+    year: '2024',
+    slug: 'voice-guard',
+    coverImage: '',
+    description: 'Real-Time Audio Deepfake and Voice Fraud Detection Platform.',
+    technologies: ['PyTorch', 'RawNet2', 'FastAPI'],
+    images: []
   }
 ];
 

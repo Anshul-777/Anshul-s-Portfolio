@@ -72,6 +72,12 @@ export default function ESGLens() {
         display: "flex", flexDirection: "column", justifyContent: "center",
         padding: "80px 48px 60px"
       }}>
+        <div style={{
+          position: "absolute", inset: 0, opacity: 0.3,
+          background: "radial-gradient(circle at 10% 20%, #6ee7b733 0%, transparent 50%), radial-gradient(circle at 90% 80%, #05966933 0%, transparent 50%)",
+          filter: "blur(70px)", animation: "morph 15s infinite alternate ease-in-out"
+        }} />
+        <style>{`@keyframes morph { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translate(0,0) rotate(0deg); } 100% { border-radius: 50%; transform: translate(20px, 20px) rotate(15deg); } }`}</style>
         <div style={{ position: "relative", maxWidth: 860, zIndex: 10 }}>
           <div style={{ display: "flex", gap: 10, marginBottom: 16, flexWrap: "wrap" }}>
             {["#26", "FinTech / Sustainability", "VERY HIGH Complexity", "Rank 26/75"].map((tag, i) => (
